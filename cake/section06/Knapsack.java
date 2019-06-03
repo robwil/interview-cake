@@ -147,6 +147,17 @@ class Knapsack {
         return results[weights.length-1][capacity];
     }
 
+    // Note: This can be further optimized by only storing 2 rows
+    //     int[][] dp = new int[2][capacity+1];
+    //   and then using i%2 or (i-1)%2 in all the logic.
+
+    // Note: And we can then reduce that, if we process the capacity loop in reverse order.
+    //     int[] dp = new int[capacity + 1];
+    //     ... initialize the same way
+    //     for (int i = 1; i < n; i++) {
+    //          for (int c = capacity; c >= 0; c--) {
+    //               ... same logic here ...
+
     public static void main(String[] args) {
         Knapsack ks = new Knapsack();
         int[] profits = {1, 6, 10, 16};
