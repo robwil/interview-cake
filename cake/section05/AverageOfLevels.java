@@ -41,5 +41,9 @@ public class AverageOfLevels {
         root.right.right = new TreeNode(5);
         List<Double> result = new AverageOfLevels().averageOfLevels(root);
         System.out.print("Level averages are: " + result);
+
+        root = new TreeNode("[10,5,-3,3,2,null,11,3,-2,null,1]");
+        result = new AverageOfLevels().averageOfLevels(root);
+        System.out.print("Level averages are: " + result);
     }
 }

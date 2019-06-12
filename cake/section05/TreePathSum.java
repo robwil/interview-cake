@@ -1,8 +1,6 @@
 package cake.section05;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 class TreeNode {
     int val;
@@ -11,6 +9,29 @@ class TreeNode {
 
     TreeNode(int x) {
         val = x;
+    }
+
+    TreeNode(String input) {
+        // expected input example:
+        // [10,5,-3,3,2,null,11,3,-2,null,1]
+        input = input.replaceAll("[\\[\\]]", "");
+        String[] tokens = input.split(",");
+        Map<Integer, TreeNode> treeNodeMap = new HashMap<>();
+        val = Integer.parseInt(tokens[0]);
+        treeNodeMap.put(0, this);
+        for (int i = 0; i < tokens.length; i++) {
+            TreeNode r = treeNodeMap.get(i);
+            if (i * 2+1 < tokens.length && !tokens[i * 2+1].equals("null")) {
+                TreeNode leftNode = new TreeNode(Integer.parseInt(tokens[i * 2+1]));
+                r.left = leftNode;
+                treeNodeMap.put(i * 2+1, leftNode);
+            }
+            if (i * 2 + 2 < tokens.length && !tokens[i * 2 + 2].equals("null")) {
+                TreeNode rightNode = new TreeNode(Integer.parseInt(tokens[i * 2 + 2]));
+                r.right = rightNode;
+                treeNodeMap.put(i * 2 + 2, rightNode);
+            }
+        }
     }
 }
 
