@@ -16,7 +16,7 @@ public class LongestPalindromicSubstring {
         // sorting does not help; that makes it harder
         // generating all sub-arrays is impractical because 2^N is prohibitive for potential length of 1000
 
-        // another approach is to use a sliding window of incrementing length K, searching for palindromes that way
+        // another approach is to use a sliding window of decrementing length K, searching for palindromes that way
         for (int k = s.length() - 1; k >= 0; k--) {
             int left = 0;
             int right = left + k;
